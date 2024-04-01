@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <title>Creation de votre compte client</title>
+</head>
+
+<body>
+    <h1>Creation de votre compte client</h1>
+    <form id="creationCompteForm" action="#" th:action="@{/client/creer}" th:object="${client}" method="POST">
+        <label>Votre nom</label>
+        <input type="text" th:field="*{nom}"/><br/>
+        <label>Votre prenom</label>
+        <input type="text" th:field="*{prenom}"/><br/>
+        <br/>
+        <label>Votre email</label>
+        <input type="text" th:field="*{email}"/><br/>
+        <br/>
+        <label>Votre identifiant</label>
+        <input type="text" th:field="*{identifiant}"/><br/>
+        <br/>
+        <label>Votre mot de passe</label>
+        <input type="text" th:field="*{password}"/><br/>
+        <br/>
+        <input type="submit" value="Valider"/> 
+        <input type="submit" value="Annuler" onclick="goBack()"/> 
+        <br/>
+    </form>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

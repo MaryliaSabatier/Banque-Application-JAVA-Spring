@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <title>Edition d'un compte bancaire</title>
+</head>
+<body>
+    <h1>Edition d'un de vos compte bancaire</h1>
+    <form action="#" th:action="@{/compte/editer}" th:object="${compte}" method="POST">
+        <input type="text" th:field="*{id}" readonly/><br/>
+        <label>Votre numero</label>
+        <input type="text" th:field="*{numero}" minlength="9" maxlength="9"/><br/>
+        <label>Votre decouvert</label>
+        <input type="text" th:field="*{decouvert}"/><br/>
+        <input type="hidden" th:field="*{solde}"/>
+        <label>Client</label>
+        <input type="text" th:field="*{client}" readonly/>
+        <br/>
+        <input type="submit" value="Valider"/> <input type="reset" value="Annuler" onclick="goBack()"/>
+        <br/>
+    </form>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+
+</html>

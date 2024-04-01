@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Espace bancaire du client</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+    <center><h1><label>Bienvenue sur votre espace bancaire &nbsp;</label><label th:text="' '+${client.nom}+' '+${client.prenom}"></label></h1></center>
+    <p th:if="${erreur}" class="alert alert-danger" th:text="${erreur}" style="width: fit-content;margin-right: auto;margin-left: auto;"></p>
+    <h3>Vos comptes chez nous</h3>
+    <table class="table table-sm table-striped table-info" style="width: 70%;">
+        <thead>
+            <tr>
+                <th>Identifiant de votre compte</th>
+                <th>Numero de votre compte</th>
+                <th>Votre Solde</th>
+                <th>Gerer vos ressources</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="compte : ${comptes}">
+
+                    <td th:text="${compte.id}"></td>
+                    <td th:text="${compte.numero}"></td>
+                    <td th:text="${compte.solde}"></td>
+                    <td><a th:href="@{/compte/effacer/}+${compte.id}">
+                        <button class="btn btn-danger">Supprimer votre compte</button></a>&nbsp;<a th:href="@{/compte/editer/}+${compte.id}">
+                        <button class="btn btn-success">Modifier votre compte</button></a>&nbsp;<a th:href="@{/compte/retrait/}+${compte.id}">
+                        <button th:if="${compte.solde}> '0'" class="btn btn-warning">Retirer de l'argent</button></a>&nbsp;<a th:href="@{/compte/transfert/}+${compte.id}">
+                        <button th:if="!${nonTransfert}AND${compte.solde}>0" class="btn btn-primary">Virer votre argent <br>sur autre compte bancaire</button></a>&nbsp;<a th:href="@{/compte/virement/}+${compte.id}">
+                        <button class="btn btn-info">Ajouter de l'argent sur votre compte bancaire</button></a>
+                    </td>
+                </form>
+            </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/compte/creer}"><button class="btn btn-primary">Creation de votre nouveau compte bancaire</button></a>
+</body>
+
+</html>

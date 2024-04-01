@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Page permettant la création de votre compte bancaire</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+    <h1>Création de votre compte bancaire</h1>
+    <form action="#" th:action="@{/compte/creer}" th:object="${compte}" method="POST">
+        <label>Numero de votre compte :</label>
+        <input type="text" th:field="*{numero}" minlength="9" maxlength="9"/><br/>
+        <label>Le client :</label>
+        <select th:field="*{client}">
+            <option th:each="client : ${clients}" th:if="${client.id}==${client.id}" th:value="${client.id}" th:text="${client.nom}+' '+${client.prenom}"></option>
+        </select>
+        <button type="submit">Creer votre compte bancaire</button><button type="reset" onclick="goBack()">Annuler</button>
+    </form>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+
+</html>

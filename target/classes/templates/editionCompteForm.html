@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Edition d'un de vos compte bancaire</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+
+
+<body>
+    <h1>Edition de votre compte bancaire</h1>
+    <form action="#" th:action="@{/creerUnCompte}" method="post" th:object="${compte}">
+        <label>Numero de compte bancaire</label>
+        <input type="text" th:field="*{numeroCompte}"/><br/>
+        <label>Votre Identifiant Client</label>
+        <input type="text" th:field="*{IdClient}"/><br/>
+        <label>Votre solde</label>
+        <input type="text" th:field="*{Solde}"/>
+        <br/>
+        <button type="submit">Sauvegardez vos modifications</button>
+    </form>
+</body>
+
+</html>
